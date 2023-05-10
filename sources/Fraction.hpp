@@ -37,6 +37,7 @@ namespace ariel
         Fraction(int numerator, int denominator);
         Fraction(float num);
         Fraction();
+
         //----------------------------------------------------------------------------------//
         //                                Getters and Setters
         //----------------------------------------------------------------------------------//
@@ -45,6 +46,7 @@ namespace ariel
         int getDenominator() const;
         void setNumerator(int numerator);
         void setDenominator(int denominator);
+
         //----------------------------------------------------------------------------------//
         //                                     Operators
         //----------------------------------------------------------------------------------//
@@ -95,7 +97,6 @@ namespace ariel
             frac = Fraction(numerator, denominator);
             return ist;
         }
-
 
         //----------------------------------------------------------------------------------//
         //                                  Friend Operators                                 
@@ -154,7 +155,6 @@ namespace ariel
             Fraction temp(num);
             return temp <= frac;
         }
-
 
         //----------------------------------------------------------------------------------//
         //                              floating point operators                         
