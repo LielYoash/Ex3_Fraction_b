@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <limits.h>
 using namespace std;
 
 namespace ariel
@@ -14,20 +15,20 @@ namespace ariel
     private:
         int numerator;
         int denominator;
-        int findGCD(int a, int b)
+        int findGCD(int num1, int num2)
         {
-            if (b == 0)
+            if (num2 == 0)
             {
-                return a;
+                return num1;
             }
-            return findGCD(b, a % b);
+            return findGCD(num2, num1 % num2);
         }
+
 
     public:
         // constructors
         Fraction(int numerator, int denominator);
         Fraction(float num);
-        Fraction(int numerator);
         Fraction();
         // Getters and Setters
         int getNumerator() const;
@@ -35,103 +36,103 @@ namespace ariel
         void setNumerator(int numerator);
         void setDenominator(int denominator);
         // operators
-        Fraction operator+(const Fraction &f);
-        Fraction operator-(const Fraction &f);
-        Fraction operator*(const Fraction &f);
-        Fraction operator/(const Fraction &f);
+        Fraction operator+(const Fraction &frac);
+        Fraction operator-(const Fraction &frac);
+        Fraction operator*(const Fraction &frac);
+        Fraction operator/(const Fraction &frac);
         Fraction operator++(int);
         Fraction &operator++();
         Fraction operator--(int);
         Fraction &operator--();
-        bool operator==(const Fraction &f) const;
-        bool operator>(const Fraction &f) const;
-        bool operator<(const Fraction &f) const;
-        bool operator>=(const Fraction &f) const;
-        bool operator<=(const Fraction &f) const;
+        bool operator==(const Fraction &frac) const;
+        bool operator>(const Fraction &frac) const;
+        bool operator<(const Fraction &frac) const;
+        bool operator>=(const Fraction &frac) const;
+        bool operator<=(const Fraction &frac) const;
 
         // output and input operators
-        friend ostream &operator<<(ostream &os, const Fraction &f)
+        friend ostream &operator<<(ostream &ost, const Fraction &frac)
         {
-            os << f.getNumerator() << "/" << f.getDenominator();
-            return os;
+            ost << frac.getNumerator() << "/" << frac.getDenominator();
+            return ost;
         }
 
-        friend istream &operator>>(istream &is, Fraction &f)
+        friend istream &operator>>(istream &ist, Fraction &frac)
         {
             int numerator = 1;
             int denominator = 1;
 
-            if (is.peek() == EOF)
+            if (ist.peek() == EOF)
             {
                 throw runtime_error("EOF Error");
             }
-            is >> numerator;
-            if (is.peek() == EOF)
+            ist >> numerator;
+            if (ist.peek() == EOF)
             {
                 throw runtime_error("EOF Error");
             }
-            is >> denominator;
+            ist >> denominator;
             if (denominator == 0)
             {
                 throw runtime_error("Denominator is zero");
             }
-            f = Fraction(numerator, denominator);
-            return is;
+            frac = Fraction(numerator, denominator);
+            return ist;
         }
 
         // friend operators
-        friend Fraction operator+(float num, const Fraction &f)
+        friend Fraction operator+(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp + f;
+            return temp + frac;
         }
 
-        friend Fraction operator-(float num, const Fraction &f)
+        friend Fraction operator-(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp - f;
+            return temp - frac;
         }
 
-        friend Fraction operator*(float num, const Fraction &f)
+        friend Fraction operator*(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp * f;
+            return temp * frac;
         }
 
-        friend Fraction operator/(float num, const Fraction &f)
+        friend Fraction operator/(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp / f;
+            return temp / frac;
         }
 
-        friend bool operator==(float num, const Fraction &f)
+        friend bool operator==(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp == f;
+            return temp == frac;
         }
 
-        friend bool operator>(float num, const Fraction &f)
+        friend bool operator>(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp > f;
+            return temp > frac;
         }
 
-        friend bool operator<(float num, const Fraction &f)
+        friend bool operator<(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp < f;
+            return temp < frac;
         }
 
-        friend bool operator>=(float num, const Fraction &f)
+        friend bool operator>=(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp >= f;
+            return temp >= frac;
         }
 
-        friend bool operator<=(float num, const Fraction &f)
+        friend bool operator<=(float num, const Fraction &frac)
         {
             Fraction temp(num);
-            return temp <= f;
+            return temp <= frac;
         }
 
         // floating point operators
