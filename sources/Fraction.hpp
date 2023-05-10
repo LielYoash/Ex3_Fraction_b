@@ -15,6 +15,11 @@ namespace ariel
     private:
         int numerator;
         int denominator;
+
+        //----------------------------------------------------------------------------------//
+        //                                      Methods                                         
+        //----------------------------------------------------------------------------------//
+
         int findGCD(int num1, int num2)
         {
             if (num2 == 0)
@@ -24,18 +29,26 @@ namespace ariel
             return findGCD(num2, num1 % num2);
         }
 
-
     public:
-        // constructors
+        //----------------------------------------------------------------------------------//
+        //                                   Constructors
+        //----------------------------------------------------------------------------------//
+
         Fraction(int numerator, int denominator);
         Fraction(float num);
         Fraction();
-        // Getters and Setters
+        //----------------------------------------------------------------------------------//
+        //                                Getters and Setters
+        //----------------------------------------------------------------------------------//
+
         int getNumerator() const;
         int getDenominator() const;
         void setNumerator(int numerator);
         void setDenominator(int denominator);
-        // operators
+        //----------------------------------------------------------------------------------//
+        //                                     Operators
+        //----------------------------------------------------------------------------------//
+
         Fraction operator+(const Fraction &frac);
         Fraction operator-(const Fraction &frac);
         Fraction operator*(const Fraction &frac);
@@ -50,7 +63,10 @@ namespace ariel
         bool operator>=(const Fraction &frac) const;
         bool operator<=(const Fraction &frac) const;
 
-        // output and input operators
+        //----------------------------------------------------------------------------------//
+        //                             Output and Input Operators                            
+        //----------------------------------------------------------------------------------//
+
         friend ostream &operator<<(ostream &ost, const Fraction &frac)
         {
             ost << frac.getNumerator() << "/" << frac.getDenominator();
@@ -80,7 +96,11 @@ namespace ariel
             return ist;
         }
 
-        // friend operators
+
+        //----------------------------------------------------------------------------------//
+        //                                  Friend Operators                                 
+        //----------------------------------------------------------------------------------//
+
         friend Fraction operator+(float num, const Fraction &frac)
         {
             Fraction temp(num);
@@ -135,7 +155,11 @@ namespace ariel
             return temp <= frac;
         }
 
-        // floating point operators
+
+        //----------------------------------------------------------------------------------//
+        //                              floating point operators                         
+        //----------------------------------------------------------------------------------//
+        
         Fraction operator+(float num)
         {
             return *this + Fraction(num);

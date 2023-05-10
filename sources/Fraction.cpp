@@ -87,11 +87,7 @@ Fraction Fraction::operator+(const Fraction &other)
     return Fraction(num, den);
 }
 
-
-
-
 // -
-
 Fraction Fraction::operator-(const Fraction &other)
 {
     int num = 0, den = 0;
@@ -109,7 +105,6 @@ Fraction Fraction::operator-(const Fraction &other)
     return Fraction(num, den);
 }
 
-
 // *
 Fraction Fraction::operator*(const Fraction &other)
 {
@@ -124,13 +119,11 @@ Fraction Fraction::operator*(const Fraction &other)
     return Fraction(num, den);
 }
 
-
 // /
 Fraction Fraction ::operator/(const Fraction &other)
 {
     if (other.numerator == 0)
         throw runtime_error("Can't divide by zero!");
-
     int num = 0, den = 0;
 
     // Calculate the numerator and denominator using multiplication
